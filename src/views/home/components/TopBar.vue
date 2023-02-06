@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import axios from 'utils/request.js'
 import dayjs from 'dayjs'
 import PopMonth from './PopMonth.vue'
 import PopCostTypes from './PopCostTypes.vue'
@@ -19,6 +20,9 @@ const costTypeToggle = () => {
 const selectMonth = ([year, month]) => {
   currentTime.value = `${year}年${month}月`
 }
+onMounted(() => {
+  axios.get('/api/type/list')
+})
 </script>
 
 <template>

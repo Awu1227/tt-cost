@@ -19,3 +19,8 @@ pnpm dev
 ```sh
 pnpm build
 ```
+
+## 设计
+
+### 配色
+https://colorhunt.co/palette/ad8b73ceab93e3caa5fffbe9

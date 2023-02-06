@@ -1,6 +1,6 @@
 <template>
 	<div>
-统计页面
+		坚持记好每笔帐
 	</div>
 </template>
 

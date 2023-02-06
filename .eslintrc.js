@@ -17,6 +17,9 @@ module.exports = {
     'vue'
   ],
   rules: {
-    'no-tabs': 'off'
+    'no-tabs': 'off',
+    'vue/multi-word-component-names': ['error', {
+      ignores: ['index'] // The component name - index to be ignored
+    }]
   }
 }
