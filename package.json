@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "dayjs": "^1.11.7",
+    "lottie-web-vue": "^2.0.6",
     "pinia": "^2.0.28",
     "vant": "^4.0.10",
     "vue": "^3.2.45",

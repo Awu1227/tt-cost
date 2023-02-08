@@ -13,6 +13,7 @@ specifiers:
   eslint-plugin-vue: ^9.9.0
   husky: ^8.0.3
   lint-staged: ^13.1.0
+  lottie-web-vue: ^2.0.6
   pinia: ^2.0.28
   sass: ^1.58.0
   unplugin-vue-components: ^0.23.0
@@ -23,6 +24,7 @@ specifiers:
 
 dependencies:
   dayjs: 1.11.7
+  lottie-web-vue: 2.0.6
   pinia: 2.0.30_vue@3.2.47
   vant: 4.0.10_vue@3.2.47
   vue: 3.2.47
@@ -2269,6 +2271,17 @@ packages:
       slice-ansi: 4.0.0
       wrap-ansi: 6.2.0
     dev: true
+
+  /lottie-web-vue/2.0.6:
+    resolution: {integrity: sha512-xtdzuYsLoyiTcGWprJXnVu+tRza5T0OJuPzI5o4x+A+QrlifBLaDzUBX4EPye+mGJ/Nzd83lWtOJpknuFHpPCw==}
+    dependencies:
+      lottie-web: 5.10.2
+      vue: 3.2.47
+    dev: false
+
+  /lottie-web/5.10.2:
+    resolution: {integrity: sha512-d0PFIGiwuMsJYaF4uPo+qG8dEorlI+xFI2zrrFtE1bGO4WoLIz+NjremxEq1swpR7juR10aeOtmNh3d6G3ub0A==}
+    dev: false
 
   /lru-cache/5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
