@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { showFailToast } from 'vant'
-// import router from '../router'
+import router from '../router'
 
 // create an axios instance
 const service = axios.create({
@@ -30,7 +30,7 @@ service.interceptors.response.use(response => {
   if (res.code !== 200) {
     if (res.msg) showFailToast(res.msg)
     if (res.code === 401) {
-      // router.push({ path: '/login' })
+      router.push({ path: '/login' })
     }
     return Promise.reject(res.msg)
   }
