@@ -1,12 +1,12 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import axios from 'utils/request.js'
+import { ref } from 'vue'
 import dayjs from 'dayjs'
 import PopMonth from './PopMonth.vue'
 import PopCostTypes from './PopCostTypes.vue'
 
 const popMonthRef = ref(null)
 
+const checkedId = ref(null)
 const popMonthVisible = ref(false)
 const popCostTypeVisible = ref(false)
 const currentTime = ref(dayjs().format('YYYY年MM月'))
@@ -14,15 +14,19 @@ const currentTime = ref(dayjs().format('YYYY年MM月'))
 const monthToggle = () => {
   popMonthVisible.value = !popMonthVisible.value
 }
-const costTypeToggle = () => {
+const costTypeToggle = (e) => {
   popCostTypeVisible.value = !popCostTypeVisible.value
+  if (typeof e === 'number') checkedId.value = e
+  console.log(checkedId.value)
+}
+const costTypeReset = () => {
+  popCostTypeVisible.value = !popCostTypeVisible.value
+  checkedId.value = null
 }
 const selectMonth = ([year, month]) => {
   currentTime.value = `${year}年${month}月`
 }
-onMounted(() => {
-  axios.get('/api/type/list')
-})
+
 </script>
 
 <template>
@@ -34,7 +38,7 @@ onMounted(() => {
 	</div>
 </div>
 <PopMonth @toggle="monthToggle" @select="selectMonth" ref="popMonthRef" :show="popMonthVisible"/>
-<PopCostTypes @toggle="costTypeToggle" :show="popCostTypeVisible"/>
+<PopCostTypes @toggle="costTypeToggle" @reset="costTypeReset" :show="popCostTypeVisible"/>
 </template>
 
 <style lang="scss" scoped>
