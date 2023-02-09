@@ -13,3 +13,10 @@ export function addBill (data) {
     data
   })
 }
+export function getBillList (params) {
+  return request({
+    url: '/api/bill/list',
+    method: 'get',
+    params
+  })
+}

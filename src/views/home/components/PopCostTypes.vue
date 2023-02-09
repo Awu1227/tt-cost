@@ -21,7 +21,7 @@
 <div class="popup-content" @click="handleTypeClick">
   <div class="popup-content-title">支出分类</div>
   <div class="popup-content-expenditure-box">
-    <div v-for="item in expenditureList" :key="item.id">{{ item.name }}</div>
+    <div v-for="item in expenditureList" :key="item.id" :class="{active: store.typeId === item.id}">{{ item.name }}</div>
   </div>
   <div class="popup-content-title">收入分类</div>
   <div class="popup-content-income-box">
@@ -34,6 +34,7 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
+import { useDateStore } from 'stores/dateStore'
 import { getTypeList } from '../api/index'
 const props = defineProps({
   show: {
@@ -43,6 +44,7 @@ const props = defineProps({
 })
 
 const emits = defineEmits(['toggle', 'reset'])
+const store = useDateStore()
 const expenditureList = ref([])
 const incomeList = ref([])
 onMounted(async () => {
@@ -92,6 +94,9 @@ const handleTypeClick = e => {
       margin: 10px;
       border-radius: 4px;
       background-color: #f5f5f5;
+    }
+    .active {
+      background-color: #AD8B73;
     }
   }
 }
