@@ -54,39 +54,48 @@ const getList = async () => {
 </script>
 
 <template>
-	<van-pull-refresh v-model="loading" @refresh="onRefresh" class="main" success-text="刷新成功">
-	<div class="list-card" v-for="item in billList" :key="item.date">
-		<div class="list-card-topbar">
-			<div class="list-card-date">{{ item.date }}</div>
-			<div class="list-card-type">
-				<span>支 {{ calucatorSum(item.bills, 1).toFixed(2) }}</span>&nbsp;
-				<span>收 {{ calucatorSum(item.bills, 2).toFixed(2)}}</span>
-			</div>
-		</div>
-		<div class="list-card-detail" v-for="detail in item.bills" :key="detail.id" @click="router.push(`/detail/${detail.id}`)">
-			<div class="list-card-detail-desc">
-				<div class="iconfont-wrap">
-					<i class="iconfont" :class="iconEnum[detail.type_id].icon"></i>
+	<div class="content-wrap">
+		<van-pull-refresh v-model="loading" @refresh="onRefresh" class="main" success-text="刷新成功">
+		<div class="list-card" v-for="item in billList" :key="item.date">
+			<div class="list-card-topbar">
+				<div class="list-card-date">{{ item.date }}</div>
+				<div class="list-card-type">
+					<span>支 {{ calucatorSum(item.bills, 1).toFixed(2) }}</span>&nbsp;
+					<span>收 {{ calucatorSum(item.bills, 2).toFixed(2)}}</span>
 				</div>
-				<span>{{ detail.type_name }}</span>
 			</div>
-			<span >
-				<van-icon name="minus" v-show="detail.pay_type === 1" size="small"/>
-				<van-icon name="plus" v-show="detail.pay_type === 2" size="small"/>
-				{{ detail.amount }}
-			</span>
+			<div class="list-card-detail" v-for="detail in item.bills" :key="detail.id" @click="router.push(`/detail/${detail.id}`)">
+				<div class="list-card-detail-desc">
+					<div class="iconfont-wrap">
+						<i class="iconfont" :class="iconEnum[detail.type_id].icon"></i>
+					</div>
+					<span>{{ detail.type_name }}</span>
+				</div>
+				<span >
+					<van-icon name="minus" v-show="detail.pay_type === 1" size="small"/>
+					<van-icon name="plus" v-show="detail.pay_type === 2" size="small"/>
+					{{ detail.amount }}
+				</span>
+			</div>
 		</div>
+	 <span class="records" @click="togglePopRecordVisible">
+		<van-icon name="records" size="20"/>
+	 </span>
+	<PopRecords @toggle="togglePopRecordVisible" :show="popRecordVisible"/>
+		</van-pull-refresh>
 	</div>
- <span class="records" @click="togglePopRecordVisible">
-	<van-icon name="records" size="20"/>
- </span>
-<PopRecords @toggle="togglePopRecordVisible" :show="popRecordVisible"/>
-	</van-pull-refresh>
 </template>
 
 <style lang="scss" scoped>
+.content-wrap {
+		height: calc((100% - 1.33333rem));
+    overflow: hidden;
+    overflow-y: scroll;
+    background-color: #f5f5f5;
+    padding: 0.26667rem;
+}
 .main {
-	height: 100%;
+	padding-bottom: 50px;
 	padding: 0 20px;
 	.list-card {
 		border-radius: 8px;

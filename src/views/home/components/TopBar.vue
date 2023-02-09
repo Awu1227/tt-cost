@@ -44,6 +44,8 @@ const selectMonth = ([year, month]) => {
 
 <style lang="scss" scoped>
 .topbar {
+	position: fixed;
+	top: 0;
 	width: 100%;
 	height: 80px;
 	padding: 10px 10px 0;
