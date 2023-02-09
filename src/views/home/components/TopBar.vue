@@ -17,7 +17,6 @@ const monthToggle = () => {
 const costTypeToggle = (e) => {
   popCostTypeVisible.value = !popCostTypeVisible.value
   if (typeof e === 'number') checkedId.value = e
-  console.log(checkedId.value)
 }
 const costTypeReset = () => {
   popCostTypeVisible.value = !popCostTypeVisible.value

@@ -6,3 +6,10 @@ export function getTypeList () {
     method: 'get'
   })
 }
+export function addBill (data) {
+  return request({
+    url: '/api/bill/add',
+    method: 'post',
+    data
+  })
+}
