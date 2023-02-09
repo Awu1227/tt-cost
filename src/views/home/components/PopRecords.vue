@@ -61,6 +61,7 @@
 import typeEnum from 'utils/typeEnum.js'
 import { getTypeList, addBill } from '../api/index'
 import { ref, onMounted, computed } from 'vue'
+import { showSuccessToast } from 'vant'
 import dayjs from 'dayjs'
 import PopCalendar from './PopCalendar.vue'
 const show = ref(true)
@@ -88,10 +89,21 @@ const onClickOverlay = () => {
   emits('toggle')
 }
 const changePayType = (e) => {
-  payType.value = e.target.innerText === '支出' ? 'expense' : 'income'
+  const text = e.target.innerText
+  if (text === '支出') {
+    payType.value = 'expense'
+    checkTypeId.value = 1
+  } else {
+    payType.value = 'income'
+    checkTypeId.value = 11
+  }
 }
 
 const onClose = async () => {
+  if (!number.value) {
+    showSuccessToast('请输入具体金额')
+    return
+  }
   const params = {
     pay_type: payType.value === 'expense' ? 1 : 2,
     type_id: checkTypeId.value,

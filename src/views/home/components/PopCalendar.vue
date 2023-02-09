@@ -5,7 +5,7 @@
 	:style="{height: '46%'}"
 	@click-overlay="onClickOverlay"
   >
-  <van-calendar :show="props.show" @confirm="onConfirm" :show-confirm="false" />
+  <van-calendar :show="props.show" @confirm="onConfirm" :show-confirm="false" :min-date="minDate" :max-date="maxDate"/>
 	</van-popup>
 </template>
 
@@ -18,6 +18,8 @@ const props = defineProps({
   }
 })
 const date = ref('')
+const minDate = new Date(2021, 0, 1)
+const maxDate = new Date()
 const emits = defineEmits(['toggle', 'select'])
 const onClickOverlay = (date) => {
   emits('toggle', date)
