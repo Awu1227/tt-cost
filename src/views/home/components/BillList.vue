@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
+import { useRouter } from 'vue-router'
 import dayjs from 'dayjs'
 import iconEnum from 'utils/typeEnum'
 import { useDateStore } from 'stores/dateStore'
@@ -8,7 +9,7 @@ import PopRecords from './PopRecords.vue'
 
 const loading = ref(false)
 const billList = ref([])
-
+const router = useRouter()
 const popRecordVisible = ref(false)
 const togglePopRecordVisible = () => {
   popRecordVisible.value = !popRecordVisible.value
@@ -62,7 +63,7 @@ const getList = async () => {
 				<span>收 {{ calucatorSum(item.bills, 2).toFixed(2)}}</span>
 			</div>
 		</div>
-		<div class="list-card-detail" v-for="detail in item.bills" :key="detail.id" >
+		<div class="list-card-detail" v-for="detail in item.bills" :key="detail.id" @click="router.push(`/detail/${detail.id}`)">
 			<div class="list-card-detail-desc">
 				<div class="iconfont-wrap">
 					<i class="iconfont" :class="iconEnum[detail.type_id].icon"></i>
