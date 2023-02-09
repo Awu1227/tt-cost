@@ -9,3 +9,8 @@ import TopBar from './components/TopBar.vue'
     <TheWelcome />
   </main>
 </template>
+<style scoped lang="scss">
+main {
+  height: 100%;
+}
+</style>

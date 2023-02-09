@@ -85,7 +85,7 @@ const getList = async () => {
 
 <style lang="scss" scoped>
 .main {
-	// height: 100px;
+	height: 100%;
 	padding: 0 20px;
 	.list-card {
 		border-radius: 8px;
