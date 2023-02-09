@@ -1,12 +1,12 @@
 <script setup>
-import TheWelcome from './components/TheWelcome.vue'
+import BillList from './components/BillList.vue'
 import TopBar from './components/TopBar.vue'
 </script>
 
 <template>
   <main>
     <TopBar/>
-    <TheWelcome />
+    <BillList />
   </main>
 </template>
 <style scoped lang="scss">
